@@ -55,9 +55,9 @@ def checking(call):
     bot.send_message(call.message.chat.id, text=f"Вы уверены,что вы {spisok_gostey[int(call.data[5:])]}?", reply_markup=keybord)
 
 def createMenu():
-        keybord = telebot.types.InlineKeyboardMarkup()  # готовим кнопки
-        key_rassadka=telebot.types.InlineKeyboardButton(text="Рассадка",callback_data="seating") #callbackdata-это метод,который отвечает за гороскоп
-        keybord.add(key_rassadka) #добавляем кнопку на экран
+        keybord = telebot.types.InlineKeyboardMarkup()
+        key_rassadka=telebot.types.InlineKeyboardButton(text="Рассадка",callback_data="seating")
+        keybord.add(key_rassadka)
 
         key_cocktails = telebot.types.InlineKeyboardButton(text="Коктейли",callback_data="alcohol_not_alcohol")
         keybord.add(key_cocktails)
@@ -103,8 +103,8 @@ def alcohol_not_alcohol(call):
     bot.send_message(call.message.chat.id, text=time_for_timing, reply_markup=create_cocktailmenu())
 
 def create_cocktailmenu():
-    keybord = telebot.types.InlineKeyboardMarkup()  # готовим кнопки
-    key_alcohol = telebot.types.InlineKeyboardButton(text="Алкогольные",callback_data="alcohol_names")  # callbackdata-это метод,который вызывается при выборе кнопки
+    keybord = telebot.types.InlineKeyboardMarkup()
+    key_alcohol = telebot.types.InlineKeyboardButton(text="Алкогольные",callback_data="alcohol_names")
     keybord.add(key_alcohol)  # добавляем кнопку на экран
     key_cocktails = telebot.types.InlineKeyboardButton(text="Безалкогольные",callback_data="not_alcohol")
     keybord.add(key_cocktails)
@@ -141,9 +141,7 @@ def timing(call):
                     + "23.15 - 02.00 - Дискотека, караоке и бар\
                        23.15 - 02.00 - Терасса ,Барбекю и чил-зона с кальянами"
 
-
-
-
+    #Use this code during event in order to show only actual timing events
     # if CurrentTime <= datetime.datetime(2021, 8, 14, hour=16, minute=00, second=0, microsecond=0, tzinfo=None):
     #     time_for_timing += f"15.30 - 16.00 - Фуршет"+"\n"
     # if CurrentTime <= datetime.datetime(2021, 8, 14, hour=16, minute=30, second=0, microsecond=0, tzinfo=None):
@@ -176,8 +174,8 @@ def timing(call):
 
 
 def alcohol_names():
-    keybord = telebot.types.InlineKeyboardMarkup()  # готовим кнопки
-    keybord.add(telebot.types.InlineKeyboardButton(text="Синий иней",callback_data="description_sinei"))  # добавляем кнопку на экран
+    keybord = telebot.types.InlineKeyboardMarkup()
+    keybord.add(telebot.types.InlineKeyboardButton(text="Синий иней",callback_data="description_sinei"))
     keybord.add(telebot.types.InlineKeyboardButton(text="Особа", callback_data="description_osoba"))
     keybord.add(telebot.types.InlineKeyboardButton(text="Бочка рома", callback_data="description_bochka"))
     keybord.add(telebot.types.InlineKeyboardButton(text="Порн стар мартини", callback_data="description_porn_star"))
@@ -195,8 +193,8 @@ def create_not_alcohol_names(call):
     bot.send_message(call.message.chat.id, text="Выберите какой безалкогольный коктейль желаете\U0001F913", reply_markup=not_alcohol())
 
 def not_alcohol():
-    keybord = telebot.types.InlineKeyboardMarkup()  # готовим кнопки
-    keybord.add(telebot.types.InlineKeyboardButton(text="Лимонад «Лесные ягоды»",callback_data="description_meri"))  # добавляем кнопку на экран
+    keybord = telebot.types.InlineKeyboardMarkup()
+    keybord.add(telebot.types.InlineKeyboardButton(text="Лимонад «Лесные ягоды»",callback_data="description_meri"))
     keybord.add(telebot.types.InlineKeyboardButton(text="Лимонад «M&M’s»",callback_data="description_shirli_templ"))
     key_back = telebot.types.InlineKeyboardButton(text="Назад", callback_data="alcohol_not_alcohol")
     keybord.add(key_back)
@@ -251,7 +249,7 @@ def order(call):
         name = spisok_gostey[dct[call.message.chat.id]]
         table= spisok_stolov[dct[call.message.chat.id]]
         cocktail = call.data.split("_")[1]
-        bot.send_message(655092828, text=f"{name}  заказал(а) {cocktail} стол гостя {table}")
+        bot.send_message(705511792, text=f"{name}  заказал(а) {cocktail} стол гостя {table}") #Use here barmen id
 
 
 
